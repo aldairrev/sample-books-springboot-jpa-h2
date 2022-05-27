@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+<head>
+    <title>Book Create</title>
+</head>
+<body>
+    <div class="mx-auto px-4" style="max-width: 350px" layout:fragment="content">
+        <div class="d-flex align-items-center flex-column">
+            <img src="https://www.pngkit.com/png/full/173-1730463_happy-book-svg-scrapbook-cut-file-cute-clipart.png" alt="book-happy" class="w-75">
+            <h3 class="text-center mt-4">Hooray!</h3>
+            <span class="text-center text-secondary mt-3 mb-5">We noticed that you would like to add a new book, please enter the following information</span>
+        </div>
+        <div>
+            <form action="#" method="POST" th:action="@{/books/store}" th:object="${book}">
+                <div class="form-group d-none">
+                    <label for="id" class="form-label">Id</label>
+                    <input type="text" class="form-control" name="id" th:value="${book_id}" readonly>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input class="form-control" type="text" name="isbn">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input class="form-control" type="text" name="title">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="authorName" class="form-label">Author</label>
+                    <input class="form-control" type="text" name="authorName">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="publisherName" class="form-label">Publisher</label>
+                    <input class="form-control" type="text" name="publisherName">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="year" class="form-label">Year</label>
+                    <input class="form-control" type="number" name="year">
+                </div>
+                <div class="form-group">
+                    <label for="price" class="form-label">Price</label>
+                    <input class="form-control" type="number" name="price" step="0.01">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-block w-100 btn-primary mb-5">Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

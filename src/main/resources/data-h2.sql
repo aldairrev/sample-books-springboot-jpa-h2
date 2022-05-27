@@ -1,0 +1,1 @@
+INSERT INTO books VALUES (1, '9780747532743', 'Bloomsburry', 'J. K. Rowling', 2000, 'Harry Potter and the Philosopher s Stone', 6499.90); 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}">
+<head>
+    <title>Books</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="w-100" style="background-size: cover; background-position: center; background-image: url('https://c4.wallpaperflare.com/wallpaper/364/25/164/library-stuttgart-modern-wallpaper-preview.jpg');" >
+            <div class="bg-opacity-50 bg-black" style="padding: 100px 0;">
+                <div class="container">
+                    <div class="mx-auto" style="max-width: 500px;">
+                        <h1 class="text-center text-white" style="font-size: 48px;">
+                            Books
+                        </h1>
+                        <br>
+                        <h5 class="text-center text-white-50">
+                            My library, my lifeline. Open your world. Opening the door to knowledge. Preserving the past, opening the future
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto py-5">
+            <div class="d-flex align-items-center pb-5 flex-column">
+                <h3 class="my-5">What are you waiting for?</h3>
+                <div>
+                    <a class="btn btn-success d-inlineblock" th:href="@{/books/create}">Add a new book</a>
+                </div>
+            </div>
+            <div th:switch="books" class="overflow-auto">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Actions</th>
+                    </thead>
+                    <tbody>
+                        <tr th:each="book : ${books}">
+                            <td scope="row" th:text="${book.isbn}"></td>
+                            <td th:text="${book.title}"></td>
+                            <td th:text="${book.price}"></td>
+                            <td th:text="${book.authorName}"></td>
+                            <td th:text="${book.publisherName}"></td>
+                            <td th:text="${book.year}"></td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    <a class="btn btn-warning btn-sm" th:href="@{/books/edit/{id} (id = ${book.id})}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" th:href="@{/books/delete/{id} (id = ${book.id})}">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
